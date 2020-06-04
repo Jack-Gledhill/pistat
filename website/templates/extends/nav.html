@@ -1,0 +1,40 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="https://github.jacktek.net/pistat">
+            <img src="{{ url_for(endpoint='static', filename='assets/navicon.png') }}" width="28" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a href="/" class="navbar-item">
+            Device Overview
+            </a>
+            <a href="/cpu" class="navbar-item">
+            CPU Usage
+            </a>
+            <a href="/mem" class="navbar-item">
+                Memory Usage
+            </a>
+            <a href="/disk" class="navbar-item">
+                Disk Usage
+            </a>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a href="/api/logout" class="button is-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script src="{{ url_for(endpoint='static', filename='scripts/nav.js') }}"></script>

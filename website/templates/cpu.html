@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block head_imports %}
+{% endblock %}
+
+{% block base_body_content %}
+    {% include "extends/nav.html" %}
+
+    <div class="section">
+        <div class="container">
+            <span class="title is-4 has-text-black">CPU Information</span>
+            <p class="content">{{ stats.cpu.cores }} cores @ {{ hertz_4_humans(count=stats.cpu.max) }} / {{ hertz_4_humans(count=stats.cpu.min) }}</p>
+            {% if stats.cpu.temp != "???" %}
+                <p class="content is-medium">
+                    Temperature
+                    {% if stats.cpu.temp >= 80 %}
+                        <span class="tag is-danger">Overheating</span>
+                    {% endif %}
+                </p>
+                {% if stats.cpu.temp >= 80 %}
+                    <progress class="progress is-danger" value="{{ stats.cpu.temp }}" max="100"></progress>
+                {% elif stats.cpu.temp >= 70 %}
+                    <progress class="progress is-warning" value="{{ stats.cpu.temp }}" max="100"></progress>
+                {% elif stats.cpu.temp >= 60 %}
+                    <progress class="progress is-success" value="{{ stats.cpu.temp }}" max="100"></progress>
+                {% elif stats.cpu.temp >= 50 %}
+                    <progress class="progress is-primary" value="{{ stats.cpu.temp }}" max="100"></progress>
+                {% elif stats.cpu.temp >= 40 %}
+                    <progress class="progress is-link" value="{{ stats.cpu.temp }}" max="100"></progress>
+                {% else %}
+                    <progress class="progress is-info" value="{{ stats.cpu.temp }}" max="100"></progress>
+                {% endif %}
+            {% endif %}
+        </div>
+        <hr>
+        <div class="container">
+            <span class="title is-4 has-text-black">Core Usage</span>
+            {% for core_group in split_list(stats.cores, 2) %}
+                <div class="columns">
+                    {% for core in core_group %}
+                        <div class="column is-half">
+                            <p class="content">Core #{{ core.id }}</p>
+                            {% if core.used >= 90 %}
+                                <progress class="progress is-danger" value="{{ core.used }}" max="100"></progress>
+                            {% elif core.used >= 80 %}
+                                <progress class="progress is-warning" value="{{ core.used }}" max="100"></progress>
+                            {% elif core.used >= 70 %}
+                                <progress class="progress is-success" value="{{ core.used }}" max="100"></progress>
+                            {% elif core.used >= 60 %}
+                                <progress class="progress is-primary" value="{{ core.used }}" max="100"></progress>
+                            {% elif core.used >= 50 %}
+                                <progress class="progress is-link" value="{{ core.used }}" max="100"></progress>
+                            {% else %}
+                                <progress class="progress is-info" value="{{ core.used }}" max="100"></progress>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+{% endblock %}

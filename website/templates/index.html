@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block head_imports %}
+{% endblock %}
+
+{% block base_body_content %}
+    {% include "extends/nav.html" %}
+
+    <div class="section">
+        <div class="container">
+            <p class="title is-4 has-text-black">Uptime</p>
+            <p class="content">{{ stats.uptime }}</p>
+            <hr>
+            <p class="title is-4 has-text-black">Network</p>
+            <p class="content">Local IP address: {{ stats.ips.local }}</p>
+            <p class="content" id="external-ip">External IP address: <a onclick="$('#external-ip').text(`External IP address: ${$('#external-ip-proxy').text()}`);">Click to reveal</a></p>
+        </div>        
+    </div>
+
+    <proxy id="external-ip-proxy" style="display: none;">{{ stats.ips.public }}</proxy>
+{% endblock %}

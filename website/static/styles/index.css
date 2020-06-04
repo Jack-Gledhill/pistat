@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,400i,700");
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Nunito", "Verdana", "Karla";
+}
+button, div, a:focus {
+    outline: 0;
+}
+a {
+    text-decoration: none;
+    transition: color .17s ease-in-out;
+    color: #0fb9e9;
+}
+a:hover {
+    color: #4196F7;
+}

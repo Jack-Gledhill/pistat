@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block head_imports %}
+{% endblock %}
+
+{% block base_body_content %}
+    {% include "extends/nav.html" %}
+
+    <div class="section">
+        {% for disk in stats.disks %}
+            <div class="container">
+                <p class="title is-4 has-text-black">Disk #{{ disk.id }} {{ disk.path }}</p>
+                <p class="content">
+                    In use: {{ bytes_4_humans(count=disk.used) }}<br>
+                    Available: {{ bytes_4_humans(count=disk.free) }}<br>
+                    Total: {{ bytes_4_humans(count=disk.total) }}<br>
+                </p>
+                {% if disk.percent >= 90 %}
+                    <progress class="progress is-danger" value="{{ disk.percent }}" max="100"></progress>
+                {% elif disk.percent >= 80 %}
+                    <progress class="progress is-warning" value="{{ disk.percent }}" max="100"></progress>
+                {% elif disk.percent >= 70 %}
+                    <progress class="progress is-success" value="{{ disk.percent }}" max="100"></progress>
+                {% elif disk.percent >= 60 %}
+                    <progress class="progress is-primary" value="{{ disk.percent }}" max="100"></progress>
+                {% elif disk.percent >= 50 %}
+                    <progress class="progress is-link" value="{{ disk.percent }}" max="100"></progress>
+                {% else %}
+                    <progress class="progress is-info" value="{{ disk.percent }}" max="100"></progress>
+                {% endif %}
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!-- 
+Copyright (C) JackTEK 2018-2020
+-------------------------------
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    {{ metadata|safe }}
+    {% include "extends/head.html" %}
+    {% block head_imports %}
+    {% endblock %}
+
+    {% block head_title %}
+        <title>PiStat</title>
+    {% endblock %}
+</head>
+<body>
+    {% block base_body_content %}
+    {% endblock %}
+</body>
+</html>

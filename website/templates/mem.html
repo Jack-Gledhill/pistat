@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block head_imports %}
+{% endblock %}
+
+{% block base_body_content %}
+    {% include "extends/nav.html" %}
+
+    <div class="section">
+        <div class="container">
+            <span class="title is-4 has-text-black">RAM Usage</span>
+            <p class="content">
+                In use: {{ bytes_4_humans(count=stats.ram.used) }}<br>
+                Available: {{ bytes_4_humans(count=stats.ram.available) }}<br>
+                Total: {{ bytes_4_humans(count=stats.ram.total) }}
+            </p>
+            {% if stats.ram.percent >= 90 %}
+                <progress class="progress is-danger" value="{{ stats.ram.percent }}" max="100"></progress>
+            {% elif stats.ram.percent >= 80 %}
+                <progress class="progress is-warning" value="{{ stats.ram.percent }}" max="100"></progress>
+            {% elif stats.ram.percent >= 70 %}
+                <progress class="progress is-success" value="{{ stats.ram.percent }}" max="100"></progress>
+            {% elif stats.ram.percent >= 60 %}
+                <progress class="progress is-primary" value="{{ stats.ram.percent }}" max="100"></progress>
+            {% elif stats.ram.percent >= 50 %}
+                <progress class="progress is-link" value="{{ stats.ram.percent }}" max="100"></progress>
+            {% else %}
+                <progress class="progress is-info" value="{{ stats.ram.percent }}" max="100"></progress>
+            {% endif %}
+        </div>
+        <hr>
+        <div class="container">
+            <span class="title is-4 has-text-black">Swap Usage</span>
+            <p class="content">
+                In use: {{ bytes_4_humans(count=stats.swap.used) }}<br>
+                Available: {{ bytes_4_humans(count=stats.swap.free) }}<br>
+                Total: {{ bytes_4_humans(count=stats.swap.total) }}
+            </p>
+            {% if stats.swap.percent >= 90 %}
+                <progress class="progress is-danger" value="{{ stats.swap.percent }}" max="100"></progress>
+            {% elif stats.swap.percent >= 80 %}
+                <progress class="progress is-warning" value="{{ stats.swap.percent }}" max="100"></progress>
+            {% elif stats.swap.percent >= 70 %}
+                <progress class="progress is-success" value="{{ stats.swap.percent }}" max="100"></progress>
+            {% elif stats.swap.percent >= 60 %}
+                <progress class="progress is-primary" value="{{ stats.swap.percent }}" max="100"></progress>
+            {% elif stats.swap.percent >= 50 %}
+                <progress class="progress is-link" value="{{ stats.swap.percent }}" max="100"></progress>
+            {% else %}
+                <progress class="progress is-info" value="{{ stats.swap.percent }}" max="100"></progress>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

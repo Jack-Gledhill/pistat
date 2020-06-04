@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block head_imports %}
+{% endblock %}
+
+{% block base_body_content %}
+    <div class="section">
+        <div class="columns is-centered is-vcentered">
+            <div class="column is-one-third">
+                <div class="box">
+                    <p class="help is-danger" id="incorrect-creds" style="display: none;">The username or password is incorrect.</p>
+                    <div class="field" id="username-box">
+                        <label class="label">Username</label>
+                        <div class="control has-icons-left">
+                            <input class="input" id="username" type="text">
+                            <span class="icon is-small is-left">
+                              <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field" id="password-box">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left">
+                            <input class="input" id="password" type="password">
+                            <span class="icon is-small is-left">
+                              <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-link" onclick="login(event);">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for(endpoint='static', filename='scripts/login.js') }}"></script>
+{% endblock %}

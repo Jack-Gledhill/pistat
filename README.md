@@ -6,6 +6,8 @@ PiStat is a web interface designed to run on your Raspberry Pi and serve statist
 - Usage information for all disk partitions  
 - General information like uptime and local/external IP addresses
 
+**Note:** PiStat is designed for Raspberry Pis but it can be used on any Linux system!
+
 ## Installation
 
 To install this on your Raspberry Pi, I recommend you read my [setup guide](https://docs.jacktek.net/pistat/getting-started) for PiStat.

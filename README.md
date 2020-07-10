@@ -8,6 +8,8 @@ PiStat is a web interface designed to run on your Raspberry Pi and serve statist
 
 **Note:** PiStat is designed for Raspberry Pis but it can be used on any Linux system!
 
+**If you need support or wish to report a bug, please join my Discord server: https://discord.gg/CsHF5GX**
+
 ## Installation
 
 To install this on your Raspberry Pi, I recommend you read my [setup guide](https://docs.jacktek.net/pistat/getting-started) for PiStat.
